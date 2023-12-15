@@ -3,7 +3,8 @@
     "rootNamespace": "jmayberry.CardDeck",
     "references": [
         "jmayberry.CustomAttributes",
-        "AYellowpaper.SerializedCollections"
+        "AYellowpaper.SerializedCollections",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

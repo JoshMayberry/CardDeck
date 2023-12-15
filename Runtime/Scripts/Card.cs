@@ -35,14 +35,14 @@ namespace jmayberry.CardDeck {
     }
 
     public abstract class Card<Action, Target> : ScriptableObject where Action : Enum where Target : Enum {
-        [Required][SerializeField] private string title;
-        [SerializeField] private string description;
-        [SerializeField] private CardRarityType rarity;
-        [SerializeField] private CardHoloType holo;
-        [SerializeField] private CardAfterUseType afterUse;
-        [SerializeField] private int cost;
-        [Required][SerializeField] private Sprite artwork;
-        [Required][SerializeField] private List<CardAction<Action, Target>> actionList;
+        [SerializeField] public string title { get; private set; }
+        [SerializeField] public string description { get; private set; }
+        [SerializeField] public CardRarityType rarity { get; private set; }
+        [SerializeField] public CardHoloType holo { get; private set; }
+        [SerializeField] public CardAfterUseType afterUse { get; private set; }
+        [SerializeField] public int cost { get; private set; }
+        [SerializeField] public Sprite artwork { get; private set; }
+        [SerializeField] public List<CardAction<Action, Target>> actionList { get; private set; }
 
         [Readonly] internal CardState currentState = CardState.Unknown;
         public UnityEvent<Card<Action, Target>> onCardDrawn = new UnityEvent<Card<Action, Target>>();

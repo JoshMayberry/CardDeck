@@ -15,6 +15,7 @@ namespace jmayberry.CardDeck {
 
         [Header("Sprites")]
         [Required] public Sprite spriteBack;
+        [Required] public UiCard<Action, Target> uiCardPrefab;
         [SerializedDictionary("Rarity", "Sprite")] public SerializedDictionary<CardRarityType, Sprite> spriteRarity;
         [SerializedDictionary("Holo", "Sprite")] public SerializedDictionary<CardHoloType, Sprite> spriteHolo;
         [SerializedDictionary("After Use", "Sprite")]  public SerializedDictionary<CardAfterUseType, Sprite> spriteAfterUse;

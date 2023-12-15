@@ -32,10 +32,10 @@ ScriptedImporter:
     sRGBTexture: 1
     spriteMode: 2
     spriteExtrude: 1
-    spriteMeshType: 1
+    spriteMeshType: 0
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 100
+    spritePixelsToUnits: 32
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -71,11 +71,11 @@ ScriptedImporter:
     textureFormatSet: 0
     applyGammaDecoding: 0
   previousAsepriteImporterSettings:
-    fileImportMode: 1
+    fileImportMode: 0
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     spritePadding: 0
     generateModelPrefab: 1
@@ -83,11 +83,11 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   asepriteImporterSettings:
-    fileImportMode: 1
+    fileImportMode: 0
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     spritePadding: 0
     generateModelPrefab: 1
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 0
+  platformSettingsDirtyTick: 638382524864647482
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,7 +121,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: CardTemplate_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -130,7 +130,7 @@ ScriptedImporter:
       y: 4
       width: 80
       height: 112
-    spriteID: 72a0b4cb8b254b24b99e2ed37cbd5cbb
+    spriteID: ba1ee87b2d3411145a4defc0471acd5e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -141,7 +141,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: CardTemplate_Frame_1
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -150,7 +150,7 @@ ScriptedImporter:
       y: 124
       width: 80
       height: 112
-    spriteID: 21795f8c6bbbe324f98b9bdeaecfabee
+    spriteID: 75a72d6466ca7d4489e91848346074c4
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -159,9 +159,9 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 124}
-  - name: CardTemplate_Frame_2
+  - name: CardTemplate_Frame_4
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -170,7 +170,7 @@ ScriptedImporter:
       y: 244
       width: 80
       height: 112
-    spriteID: 3e65ea02e3a6a1d42a964b88882de7eb
+    spriteID: 3d9108882b048fe488d935fce911ea97
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -179,9 +179,9 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 244}
-  - name: CardTemplate_Frame_3
+  - name: CardTemplate_Frame_5
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -190,7 +190,7 @@ ScriptedImporter:
       y: 364
       width: 80
       height: 112
-    spriteID: f5c7dc03b89bfa744aa8ae3d4ed64805
+    spriteID: b055d76c0d789ca47a8caac53d7f47f6
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -199,9 +199,9 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 364}
-  - name: CardTemplate_Frame_4
+  - name: CardTemplate_Frame_6
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -210,7 +210,7 @@ ScriptedImporter:
       y: 4
       width: 80
       height: 112
-    spriteID: 4ffd36563a568de4186908e18884c23a
+    spriteID: ab564537a567157468047b18dbafd9dc
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -221,7 +221,7 @@ ScriptedImporter:
     uvTransform: {x: 92, y: 4}
   - name: CardTemplate_Frame_7
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -230,7 +230,7 @@ ScriptedImporter:
       y: 124
       width: 80
       height: 112
-    spriteID: 54b27d7be1e6037488f81f58dce81dfb
+    spriteID: 2ea46571fa1214447b728bfdd89661ac
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -241,7 +241,7 @@ ScriptedImporter:
     uvTransform: {x: 92, y: 124}
   - name: CardTemplate_Frame_8
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -250,7 +250,7 @@ ScriptedImporter:
       y: 244
       width: 80
       height: 112
-    spriteID: c8704329d77caa848aba760ae272867e
+    spriteID: 9131dfd410362fa4bad58ab9d5f54ff3
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -261,7 +261,7 @@ ScriptedImporter:
     uvTransform: {x: 92, y: 244}
   - name: CardTemplate_Frame_9
     originalName: 
-    pivot: {x: 0.50000006, y: -0.060000002}
+    pivot: {x: 0.50000006, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -270,7 +270,7 @@ ScriptedImporter:
       y: 364
       width: 68
       height: 100
-    spriteID: 1e270c197cfebc14c802117702f2aa68
+    spriteID: f646dcd7223636d47ae1b9a6166e8c10
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -281,7 +281,7 @@ ScriptedImporter:
     uvTransform: {x: 92, y: 364}
   - name: CardTemplate_Frame_10
     originalName: 
-    pivot: {x: 0.50000006, y: -0.060000002}
+    pivot: {x: 0.50000006, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -290,7 +290,7 @@ ScriptedImporter:
       y: 4
       width: 68
       height: 100
-    spriteID: 68b699d3db20f40409f8e0b6c5ba2b47
+    spriteID: 64776c3aad63fd743b3895b3eded372e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -301,7 +301,7 @@ ScriptedImporter:
     uvTransform: {x: 180, y: 4}
   - name: CardTemplate_Frame_11
     originalName: 
-    pivot: {x: 0.50000006, y: -0.060000002}
+    pivot: {x: 0.50000006, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -310,7 +310,7 @@ ScriptedImporter:
       y: 112
       width: 68
       height: 100
-    spriteID: a29e52e6088cb834e87e0b30512e1320
+    spriteID: 3a7246a487ac585458a559306afd3a36
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -321,7 +321,7 @@ ScriptedImporter:
     uvTransform: {x: 180, y: 112}
   - name: CardTemplate_Frame_12
     originalName: 
-    pivot: {x: 0.5, y: -1.2045455}
+    pivot: {x: 0.5, y: 0.06818178}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -330,7 +330,7 @@ ScriptedImporter:
       y: 381
       width: 60
       height: 44
-    spriteID: a6188c646fff6414a91efa5eadb0082b
+    spriteID: 96a02a075167b8b4a8ed720e3f4606f2
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -341,7 +341,7 @@ ScriptedImporter:
     uvTransform: {x: 180, y: 381}
   - name: CardTemplate_Frame_13
     originalName: 
-    pivot: {x: 0.5, y: -1.1777779}
+    pivot: {x: 0.5, y: 0.06666664}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -350,7 +350,7 @@ ScriptedImporter:
       y: 328
       width: 60
       height: 45
-    spriteID: 2339daad4c98fcf4891e935fc0d1a8b6
+    spriteID: 776cc9b333ccdac42b399003c2a74b3f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -361,7 +361,7 @@ ScriptedImporter:
     uvTransform: {x: 180, y: 328}
   - name: CardTemplate_Frame_14
     originalName: 
-    pivot: {x: 0.5, y: -1.2045455}
+    pivot: {x: 0.5, y: 0.06818178}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -370,7 +370,7 @@ ScriptedImporter:
       y: 433
       width: 60
       height: 44
-    spriteID: 6479de345d166134fb92e98db34c4c1b
+    spriteID: 4342564030b38a24bb90487b0609ba83
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -381,7 +381,7 @@ ScriptedImporter:
     uvTransform: {x: 180, y: 433}
   - name: CardTemplate_Frame_2
     originalName: 
-    pivot: {x: 0.5, y: -1.2045455}
+    pivot: {x: 0.5, y: 0.06818178}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -390,7 +390,7 @@ ScriptedImporter:
       y: 4
       width: 60
       height: 44
-    spriteID: 2426bb390281b11488484e0d13c543d6
+    spriteID: 32264c8b5c4201e4a83fb7a224c7b8ef
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -401,7 +401,7 @@ ScriptedImporter:
     uvTransform: {x: 256, y: 4}
   - name: CardTemplate_Frame_3
     originalName: 
-    pivot: {x: 0.50000006, y: -0.060000002}
+    pivot: {x: 0.50000006, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -410,7 +410,7 @@ ScriptedImporter:
       y: 220
       width: 68
       height: 100
-    spriteID: c28e57086c49af24b926d3aadc52ee6c
+    spriteID: dd395356b66f27a44847f5fd32dd84e0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -435,7 +435,7 @@ ScriptedImporter:
         y: 0
         width: 80
         height: 112
-      spriteId: 72a0b4cb8b254b24b99e2ed37cbd5cbb
+      spriteId: ba1ee87b2d3411145a4defc0471acd5e
     - name: CardTemplate_Frame_1
       frameIndex: 1
       cellRect:
@@ -443,7 +443,7 @@ ScriptedImporter:
         y: 0
         width: 80
         height: 112
-      spriteId: 21795f8c6bbbe324f98b9bdeaecfabee
+      spriteId: 75a72d6466ca7d4489e91848346074c4
     - name: CardTemplate_Frame_4
       frameIndex: 4
       cellRect:
@@ -451,7 +451,7 @@ ScriptedImporter:
         y: 0
         width: 80
         height: 112
-      spriteId: 3e65ea02e3a6a1d42a964b88882de7eb
+      spriteId: 3d9108882b048fe488d935fce911ea97
     - name: CardTemplate_Frame_5
       frameIndex: 5
       cellRect:
@@ -459,7 +459,7 @@ ScriptedImporter:
         y: 0
         width: 80
         height: 112
-      spriteId: f5c7dc03b89bfa744aa8ae3d4ed64805
+      spriteId: b055d76c0d789ca47a8caac53d7f47f6
     - name: CardTemplate_Frame_6
       frameIndex: 6
       cellRect:
@@ -467,7 +467,7 @@ ScriptedImporter:
         y: 0
         width: 80
         height: 112
-      spriteId: 4ffd36563a568de4186908e18884c23a
+      spriteId: ab564537a567157468047b18dbafd9dc
     - name: CardTemplate_Frame_7
       frameIndex: 7
       cellRect:
@@ -475,7 +475,7 @@ ScriptedImporter:
         y: 0
         width: 80
         height: 112
-      spriteId: 54b27d7be1e6037488f81f58dce81dfb
+      spriteId: 2ea46571fa1214447b728bfdd89661ac
     - name: CardTemplate_Frame_8
       frameIndex: 8
       cellRect:
@@ -483,7 +483,7 @@ ScriptedImporter:
         y: 0
         width: 80
         height: 112
-      spriteId: c8704329d77caa848aba760ae272867e
+      spriteId: 9131dfd410362fa4bad58ab9d5f54ff3
     - name: CardTemplate_Frame_9
       frameIndex: 9
       cellRect:
@@ -491,7 +491,7 @@ ScriptedImporter:
         y: 6
         width: 68
         height: 100
-      spriteId: 1e270c197cfebc14c802117702f2aa68
+      spriteId: f646dcd7223636d47ae1b9a6166e8c10
     - name: CardTemplate_Frame_10
       frameIndex: 10
       cellRect:
@@ -499,7 +499,7 @@ ScriptedImporter:
         y: 6
         width: 68
         height: 100
-      spriteId: 68b699d3db20f40409f8e0b6c5ba2b47
+      spriteId: 64776c3aad63fd743b3895b3eded372e
     - name: CardTemplate_Frame_11
       frameIndex: 11
       cellRect:
@@ -507,7 +507,7 @@ ScriptedImporter:
         y: 6
         width: 68
         height: 100
-      spriteId: a29e52e6088cb834e87e0b30512e1320
+      spriteId: 3a7246a487ac585458a559306afd3a36
     - name: CardTemplate_Frame_12
       frameIndex: 12
       cellRect:
@@ -515,7 +515,7 @@ ScriptedImporter:
         y: 53
         width: 60
         height: 44
-      spriteId: a6188c646fff6414a91efa5eadb0082b
+      spriteId: 96a02a075167b8b4a8ed720e3f4606f2
     - name: CardTemplate_Frame_13
       frameIndex: 13
       cellRect:
@@ -523,7 +523,7 @@ ScriptedImporter:
         y: 53
         width: 60
         height: 45
-      spriteId: 2339daad4c98fcf4891e935fc0d1a8b6
+      spriteId: 776cc9b333ccdac42b399003c2a74b3f
     - name: CardTemplate_Frame_14
       frameIndex: 14
       cellRect:
@@ -531,7 +531,7 @@ ScriptedImporter:
         y: 53
         width: 60
         height: 44
-      spriteId: 6479de345d166134fb92e98db34c4c1b
+      spriteId: 4342564030b38a24bb90487b0609ba83
     - name: CardTemplate_Frame_2
       frameIndex: 2
       cellRect:
@@ -539,7 +539,7 @@ ScriptedImporter:
         y: 53
         width: 60
         height: 44
-      spriteId: 2426bb390281b11488484e0d13c543d6
+      spriteId: 32264c8b5c4201e4a83fb7a224c7b8ef
     - name: CardTemplate_Frame_3
       frameIndex: 3
       cellRect:
@@ -547,10 +547,65 @@ ScriptedImporter:
         y: 6
         width: 68
         height: 100
-      spriteId: c28e57086c49af24b926d3aadc52ee6c
+      spriteId: dd395356b66f27a44847f5fd32dd84e0
     linkedCells: []
     parentIndex: -1
-  platformSettings: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Android
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: iPhone
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: WebGL
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 80, y: 112}
