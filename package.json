@@ -1,0 +1,25 @@
+{
+	"name": "com.jmayberry.carddeck",
+	"displayName": "Card Deck",
+	"version": "1.0.0",
+	"unity": "2021.1",
+	"description": "A foundation for implementing cards in a game.",
+	"keywords": [
+		"card",
+		"random",
+		"utility"
+	],
+	"dependencies": {
+	},
+	"author": {
+		"name": "jmayberry",
+		"email": "joshua.mayberry1991@gmail.com"
+	},
+	"samples": [
+		{
+			"displayName": "TowerDefense",
+			"description": "Using cards for upgrades in a Tower Defense game",
+			"path": "Samples~/TowerDefense"
+		}
+	]
+}

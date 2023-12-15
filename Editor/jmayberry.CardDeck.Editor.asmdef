@@ -1,0 +1,19 @@
+{
+    "name": "jmayberry.CardDeck.Editor",
+    "rootNamespace": "jmayberry.CardDeck.Editor",
+    "references": [
+        "jmayberry.CardDeck",
+        "jmayberry.CustomAttributes"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
