@@ -2,7 +2,8 @@
     "name": "jmayberry.CardDeck",
     "rootNamespace": "jmayberry.CardDeck",
     "references": [
-        "jmayberry.CustomAttributes"
+        "jmayberry.CustomAttributes",
+        "AYellowpaper.SerializedCollections"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
