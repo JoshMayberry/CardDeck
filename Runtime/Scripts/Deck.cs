@@ -26,7 +26,7 @@ namespace jmayberry.CardDeck {
 		public UnityEvent<Card<Action, Target>> onCardHand = new UnityEvent<Card<Action, Target>>();
 		public UnityEvent<Card<Action, Target>> onCardDestroy = new UnityEvent<Card<Action, Target>>();
 
-		public void InitializeDrawPile() {
+		public virtual void InitializeDrawPile() {
 			var cardManager = CardManager<Action, Target>.instance;
 
 			cardManager.uiCardSpawner.DespawnAll();

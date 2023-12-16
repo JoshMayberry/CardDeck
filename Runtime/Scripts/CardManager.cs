@@ -43,7 +43,7 @@ namespace jmayberry.CardDeck {
 
         public static CardManager<Action, Target> instance { get; private set; }
 
-		public void Awake() {
+		public virtual void Awake() {
 			if (instance != null && instance != this) {
 				Debug.LogError("More than 1 'CardManager<Action, Target> found in scene");
 				Destroy(gameObject);

@@ -41,13 +41,6 @@ namespace jmayberry.CardDeck {
 			}
 		}
 
-		public void Start() {
-			// Clean up piles
-			for (int i = this.transform.childCount - 1; i >= 0; i--) {
-				Destroy(this.transform.GetChild(i).gameObject);
-			}
-		}
-
 		public int Count() {
 			return this.transform.childCount;
 		}
@@ -97,7 +90,26 @@ namespace jmayberry.CardDeck {
 			);
 		}
 
-		public IEnumerator<Card<Action, Target>> GetEnumerator() {
+		public void ClearPile() {
+			List<Card<Action, Target>> childList = new List<Card<Action, Target>>();
+			foreach (Card<Action, Target> card in this) {
+				childList.Add(card);
+			}
+
+			var cardManager = CardManager<Action, Target>.instance;
+            foreach (Card<Action, Target> card in childList) {
+				cardManager.uiCardSpawner.Despawn(card);
+			}
+        }
+
+        public void AddCardsToSpawner() {
+            var cardManager = CardManager<Action, Target>.instance;
+            foreach (Card<Action, Target> card in this) {
+                cardManager.uiCardSpawner.ShouldBeActive(card);
+            }
+        }
+
+        public IEnumerator<Card<Action, Target>> GetEnumerator() {
 			foreach (Transform cardTransform in this.transform) {
 				Card<Action, Target> card = cardTransform.gameObject.GetComponent<Card<Action, Target>>();
 				yield return card;
