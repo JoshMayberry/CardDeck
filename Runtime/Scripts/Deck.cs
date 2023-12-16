@@ -16,8 +16,9 @@ namespace jmayberry.CardDeck {
 	public abstract class Deck<Action, Target> : ScriptableObject, IEnumerable where Action : Enum where Target : Enum {
 		[SerializeField] private string title;
 		[SerializeField] private DrawEmptyType whenDrawEmpty;
+        [SerializeField] protected Vector3 initialCardScale = new Vector3(1, 1, 1);
 
-		[SerializeField] private List<CardData<Action, Target>> cardList = new List<CardData<Action, Target>>();
+        [SerializeField] private List<CardData<Action, Target>> cardList = new List<CardData<Action, Target>>();
 
 		public UnityEvent<Card<Action, Target>> onCardUse = new UnityEvent<Card<Action, Target>>();
 		public UnityEvent<Card<Action, Target>> onCardDraw = new UnityEvent<Card<Action, Target>>();
@@ -35,7 +36,8 @@ namespace jmayberry.CardDeck {
 					continue;
 				}
 				Card<Action, Target> uiCard = cardManager.uiCardSpawner.Spawn(Vector3.zero, cardManager.gameObject.transform);
-				uiCard.currentState = CardState.Unknown;
+				uiCard.gameObject.transform.localScale = this.initialCardScale;
+                uiCard.currentState = CardState.Unknown;
 				uiCard.SetCard(card);
 				uiCard.GoToDraw();
 			}
