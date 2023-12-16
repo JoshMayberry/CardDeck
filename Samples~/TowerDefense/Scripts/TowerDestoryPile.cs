@@ -4,4 +4,4 @@ using UnityEngine;
 
 using jmayberry.CardDeck;
 
-public class UiTowerCard : Card<TowerAction, TowerTarget> {}
+public class TowerDestroyPile : PileDestroy<TowerAction, TowerTarget> { }

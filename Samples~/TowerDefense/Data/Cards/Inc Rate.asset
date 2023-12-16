@@ -13,16 +13,13 @@ MonoBehaviour:
   m_Name: Inc Rate
   m_EditorClassIdentifier: 
   title: Increase Rate
-  description: 
-  rarity: 0
+  description: +0.2
+  rarity: 1
   holo: 0
   afterUse: 0
-  cost: 0
-  artwork: {fileID: 0}
+  cost: 2
+  artwork: {fileID: -6003594548577529567, guid: 89ae8bad2de701f479bdd5e693561ef7, type: 3}
   actionList:
   - effectType: 1
     effectTarget: 0
     effectMagnitude: 0.2
-  onCardDrawn:
-    m_PersistentCalls:
-      m_Calls: []

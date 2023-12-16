@@ -12,11 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79b247ba22d1afa4286f2bb514eef5d8, type: 3}
   m_Name: Initial
   m_EditorClassIdentifier: 
-  id: 0
   title: 
-  cards:
-  - {fileID: 11400000, guid: 8cfd3c389c622184ba3da9ce76c4e636, type: 2}
+  cardList:
   - {fileID: 11400000, guid: 8cfd3c389c622184ba3da9ce76c4e636, type: 2}
   - {fileID: 11400000, guid: 8cfd3c389c622184ba3da9ce76c4e636, type: 2}
   - {fileID: 11400000, guid: abcf37155746d2b4dbd120d4b1b62377, type: 2}
+  - {fileID: 11400000, guid: abcf37155746d2b4dbd120d4b1b62377, type: 2}
   - {fileID: 11400000, guid: dc5e6dbdc87e4bd418b93bb88affecfc, type: 2}
+  onCardUse:
+    m_PersistentCalls:
+      m_Calls: []
+  onCardDraw:
+    m_PersistentCalls:
+      m_Calls: []
+  onCardDiscard:
+    m_PersistentCalls:
+      m_Calls: []
+  onCardHand:
+    m_PersistentCalls:
+      m_Calls: []
+  onCardDestroy:
+    m_PersistentCalls:
+      m_Calls: []

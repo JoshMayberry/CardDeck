@@ -13,16 +13,13 @@ MonoBehaviour:
   m_Name: Inc Attack
   m_EditorClassIdentifier: 
   title: Increase Attack
-  description: 
+  description: +3
   rarity: 0
   holo: 0
   afterUse: 0
   cost: 0
-  artwork: {fileID: 3303434115586956705, guid: dc7f343f0c0fefd49b5e24e4954a5ca3, type: 3}
+  artwork: {fileID: 4285030085138947076, guid: 89ae8bad2de701f479bdd5e693561ef7, type: 3}
   actionList:
   - effectType: 0
     effectTarget: 0
     effectMagnitude: 3
-  onCardDrawn:
-    m_PersistentCalls:
-      m_Calls: []

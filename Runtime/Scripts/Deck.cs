@@ -1,68 +1,84 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
+using jmayberry.Spawner;
 using jmayberry.CustomAttributes;
+using UnityEngine.Events;
 
 namespace jmayberry.CardDeck {
-	public abstract class Deck<Action, Target> : ScriptableObject where Action : Enum where Target : Enum {
+	public enum DrawEmptyType {
+		ShuffleDiscard,
+		GameOver,
+	}
+
+	public abstract class Deck<Action, Target> : ScriptableObject, IEnumerable where Action : Enum where Target : Enum {
 		[SerializeField] private string title;
+        [SerializeField] private DrawEmptyType whenDrawEmpty;
 
-		[SerializeField] private List<Card<Action, Target>> cardList = new List<Card<Action, Target>>();
-		[Readonly] private List<int> drawPile = new List<int>();
+        [SerializeField] private List<CardData<Action, Target>> cardList = new List<CardData<Action, Target>>();
 
-		private void InitializeDrawPile() {
-			foreach (Card<Action, Target> card in cardList) {
-				card.currentState = CardState.Unknown;
-			}
+        public UnityEvent<Card<Action, Target>> onCardUse = new UnityEvent<Card<Action, Target>>();
+        public UnityEvent<Card<Action, Target>> onCardDraw = new UnityEvent<Card<Action, Target>>();
+        public UnityEvent<Card<Action, Target>> onCardDiscard = new UnityEvent<Card<Action, Target>>();
+        public UnityEvent<Card<Action, Target>> onCardHand = new UnityEvent<Card<Action, Target>>();
+        public UnityEvent<Card<Action, Target>> onCardDestroy = new UnityEvent<Card<Action, Target>>();
 
-			this.Shuffle();
+        public void InitializeDrawPile() {
+			var cardManager = CardManager<Action, Target>.instance;
+
+            cardManager.uiCardSpawner.DespawnAll();
+            foreach (CardData<Action, Target> card in this.cardList) {
+				if (card == null) {
+                    this.cardList.Remove(card); // Get rid of empty spots
+                    continue;
+				}
+                Card<Action, Target> uiCard = cardManager.uiCardSpawner.Spawn(Vector3.zero, cardManager.gameObject.transform);
+                uiCard.currentState = CardState.Unknown;
+                uiCard.SetCard(card);
+				uiCard.GoToDraw();
+            }
+
+			cardManager.pileDraw.Shuffle();
 		}
+
+		public IEnumerator<Card<Action, Target>> GetEnumerator() {
+			foreach (Card<Action, Target> card in CardManager<Action, Target>.instance.uiCardSpawner) {
+				yield return card;
+			}
+		}
+
+		IEnumerator IEnumerable.GetEnumerator() {
+			return GetEnumerator();
+		}
+
 
 		public Card<Action, Target> DrawCard() {
-			if (drawPile.Count == 0) {
-				if (!this.Shuffle()) {
-					return null;
-				}
-			}
+			var cardManager = CardManager<Action, Target>.instance;
+            Card<Action, Target> card = cardManager.pileDraw.GetCard();
+			if (card == null) {
+				switch (this.whenDrawEmpty) {
+					case DrawEmptyType.ShuffleDiscard:
+						cardManager.pileDiscard.MoveToPile(cardManager.pileDraw, true);
+						if (cardManager.pileDraw.Count() == 0) {
+							return null;
+						}
 
-			int index = drawPile[drawPile.Count - 1];
-			drawPile.RemoveAt(drawPile.Count - 1);
-			cardList[index].GoToHand();
-			return cardList[index];
-		}
-
-		public virtual bool Shuffle() {
-			int i = 0;
-			drawPile.Clear();
-			foreach (Card<Action, Target> card in cardList) {
-				switch (card.currentState) {
-					case CardState.Unknown:
-					case CardState.InDiscard:
-						if (card.GoToDraw()) {
-							drawPile.Add(i);
+						card = cardManager.pileDraw.GetCard();
+						if (card == null) {
+							Debug.LogError("This error should never happen");
+							return null;
 						}
 						break;
+
+					case DrawEmptyType.GameOver:
+						return null;
 				}
-				i++;
-			}
+            }
 
-			if (drawPile.Count == 0) {
-				return false;
-			}
-
-            // Shuffle the drawPile
-            // Use: https://stackoverflow.com/questions/273313/randomize-a-listt/1262619#1262619
-            int n = drawPile.Count;
-			while (n > 1) {
-				n--;
-				int k = UnityEngine.Random.Range(0, n + 1);
-				int value = drawPile[k];
-				drawPile[k] = drawPile[n];
-				drawPile[n] = value;
-			}
-
-			return true;
+			card.GoToHand();
+			return card;
 		}
 	}
 }

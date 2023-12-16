@@ -4,48 +4,95 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+using jmayberry.Spawner;
 using jmayberry.CustomAttributes;
 using AYellowpaper.SerializedCollections;
 
 namespace jmayberry.CardDeck {
-    public class CardManager<Action, Target> : MonoBehaviour where Action : Enum where Target : Enum {
-        [Required] public Deck<Action, Target> currentDeck;
-        public int cardsPerRound = 3;
-        public UnityEvent<Deck<Action, Target>> onOutOfCards = new UnityEvent<Deck<Action, Target>>();
+	public class CardManager<Action, Target> : MonoBehaviour where Action : Enum where Target : Enum {
 
-        [Header("Sprites")]
-        [Required] public Sprite spriteBack;
-        [Required] public UiCard<Action, Target> uiCardPrefab;
-        [SerializedDictionary("Rarity", "Sprite")] public SerializedDictionary<CardRarityType, Sprite> spriteRarity;
-        [SerializedDictionary("Holo", "Sprite")] public SerializedDictionary<CardHoloType, Sprite> spriteHolo;
-        [SerializedDictionary("After Use", "Sprite")]  public SerializedDictionary<CardAfterUseType, Sprite> spriteAfterUse;
-        [SerializedDictionary("Action", "Sprite")]  public SerializedDictionary<Action, Sprite> spriteAction;
-        [SerializedDictionary("Target", "Sprite")]  public SerializedDictionary<Target, Sprite> spriteTarget;
+		[Header("Sprites")]
+		[Required] public Sprite spriteBack;
+		[SerializedDictionary("Rarity", "Sprite")] public SerializedDictionary<CardRarityType, Sprite> spriteRarity;
+		[SerializedDictionary("Holo", "Sprite")] public SerializedDictionary<CardHoloType, Sprite> spriteHolo;
+		[SerializedDictionary("After Use", "Sprite")]  public SerializedDictionary<CardAfterUseType, Sprite> spriteAfterUse;
+		[SerializedDictionary("Action", "Sprite")]  public SerializedDictionary<Action, Sprite> spriteAction;
+		[SerializedDictionary("Target", "Sprite")]  public SerializedDictionary<Target, Sprite> spriteTarget;
 
-        void UpdateCardDisplay(Card<Action, Target>[] cards) {
-            // TODO: Update the GUI with the given cards
-            // TODO: Implement the drag and drop logic in the GUI
+        public Sprite spriteRarityDefault;
+		public Sprite spriteHoloDefault;
+		public Sprite spriteAfterUseDefault;
+		public Sprite spriteActionDefault;
+		public Sprite spriteTargetDefault;
+
+        [Header("Piles")]
+		public int cardsPerRound = 3;
+		[Required] public Deck<Action, Target> currentDeck;
+		[Required] public IGameContext<Action, Target> currentContext;
+		[Required] public PileDraw<Action, Target> pileDraw;
+		[Required] public PileHand<Action, Target> pileHand;
+		[Required] public PileDiscard<Action, Target> pileDiscard;
+		[Required] public PileDestroy<Action, Target> pileDestroy;
+
+		[Required] public Card<Action, Target> uiCardPrefab;
+		internal UnitySpawner<Card<Action, Target>> uiCardSpawner { get; private set; }
+
+		[Header("Events")]
+		public UnityEvent<Deck<Action, Target>> onOutOfCards = new UnityEvent<Deck<Action, Target>>();
+
+		public static CardManager<Action, Target> instance { get; private set; }
+
+		public void Awake() {
+			if (instance != null && instance != this) {
+				Debug.LogError("More than 1 'CardManager<Action, Target> found in scene");
+				Destroy(gameObject);
+				return;
+			}
+
+			instance = this;
+
+			this.uiCardSpawner = new UnitySpawner<Card<Action, Target>>(this.uiCardPrefab);
+		}
+
+		public virtual void SetContext(IGameContext<Action, Target> context) {
+			this.currentContext = context;
+		}
+
+		public virtual void SetDeck(Deck<Action, Target> deck) {
+			this.currentDeck = deck;
+		}
+
+		public virtual void OnNewGame() {
+			if (this.currentDeck == null) {
+				Debug.LogError("No Deck Set");
+				return;
+			}
+
+            this.currentDeck.InitializeDrawPile();
         }
 
-        public void OnTriggerCardsOver() {
-            Card<Action, Target>[] cardsToDisplay = new Card<Action, Target>[cardsPerRound];
-            for (int i = 0; i < cardsPerRound; i++) {
-                var card = currentDeck.DrawCard();
+		public virtual void OnDrawCards() {
+			for (int i = 0; i < this.cardsPerRound; i++) {
+				var card = this.currentDeck.DrawCard();
 
-                if (card == null) {
-                    this.onOutOfCards.Invoke(this.currentDeck);
-                    return;
-                }
+				if (card == null) {
+					Debug.Log("Out of cards");
+					this.onOutOfCards.Invoke(this.currentDeck);
+					return;
+				}
+			}
+		}
 
-                cardsToDisplay[i] = card;
-            }
+		public virtual void OnDiscardHand() {
+			this.pileHand.MoveToPile(this.pileDiscard);
+		}
 
-            UpdateCardDisplay(cardsToDisplay);
-        }
+		public virtual void OnPlayCard(Card<Action, Target> card) {
+			card.PlayCard(this.currentContext);
+		}
 
-        // TODO: Call this from the GUI when a card is applied
-        public void OnApplyCard(Card<Action, Target> card, IGameContext<Action, Target> context) {
-            card.PlayCard(context);
-        }
-    }
+		public virtual void OnPlayCard(Card<Action, Target> card, IGameContext<Action, Target> context) {
+			card.PlayCard(context);
+		}
+	}
 }

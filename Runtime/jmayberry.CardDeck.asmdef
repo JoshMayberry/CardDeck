@@ -4,7 +4,8 @@
     "references": [
         "jmayberry.CustomAttributes",
         "AYellowpaper.SerializedCollections",
-        "Unity.TextMeshPro"
+        "Unity.TextMeshPro",
+        "jmayberry.Spawner"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
