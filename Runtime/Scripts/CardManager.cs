@@ -19,13 +19,13 @@ namespace jmayberry.CardDeck {
 		[SerializedDictionary("Action", "Sprite")]  public SerializedDictionary<Action, Sprite> spriteAction;
 		[SerializedDictionary("Target", "Sprite")]  public SerializedDictionary<Target, Sprite> spriteTarget;
 
-        public Sprite spriteRarityDefault;
+		public Sprite spriteRarityDefault;
 		public Sprite spriteHoloDefault;
 		public Sprite spriteAfterUseDefault;
 		public Sprite spriteActionDefault;
 		public Sprite spriteTargetDefault;
 
-        [Header("Piles")]
+		[Header("Piles")]
 		public int cardsPerRound = 3;
 		[Required] public Deck<Action, Target> currentDeck;
 		[Required] public IGameContext<Action, Target> currentContext;
@@ -39,8 +39,9 @@ namespace jmayberry.CardDeck {
 
 		[Header("Events")]
 		public UnityEvent<Deck<Action, Target>> onOutOfCards = new UnityEvent<Deck<Action, Target>>();
+		public UnityEvent<Deck<Action, Target>> onHandFull = new UnityEvent<Deck<Action, Target>>();
 
-		public static CardManager<Action, Target> instance { get; private set; }
+        public static CardManager<Action, Target> instance { get; private set; }
 
 		public void Awake() {
 			if (instance != null && instance != this) {
@@ -68,14 +69,19 @@ namespace jmayberry.CardDeck {
 				return;
 			}
 
-            this.currentDeck.InitializeDrawPile();
-        }
+			this.currentDeck.InitializeDrawPile();
+		}
 
 		public virtual void OnDrawCards() {
 			for (int i = 0; i < this.cardsPerRound; i++) {
 				var card = this.currentDeck.DrawCard();
 
 				if (card == null) {
+					if (this.pileHand.IsFull()) {
+						Debug.Log("Hand Full");
+						this.onHandFull.Invoke(this.currentDeck);
+						return;
+                    }
 					Debug.Log("Out of cards");
 					this.onOutOfCards.Invoke(this.currentDeck);
 					return;

@@ -791,6 +791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f22521984ca7634486ce8c9bdb8e600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxCards: 4
   stackChaosPositionMargin: {x: 0, y: 5, z: 5}
   stackChaosRotationMargin: {x: 0, y: 0, z: 10}
 --- !u!1001 &887781584
@@ -1271,6 +1272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1733f3a2224f9d5498ff4aa891ce308a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxCards: 0
   stackChaosPositionMargin: {x: 0, y: 0, z: 0}
   stackChaosRotationMargin: {x: 0, y: 0, z: 0}
 --- !u!1001 &1452288626
@@ -1481,6 +1483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ed76572a9a3654585ddc8d0ad8319e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxCards: 0
   stackChaosPositionMargin: {x: 0, y: 5, z: 5}
   stackChaosRotationMargin: {x: 0, y: 0, z: 10}
 --- !u!1 &1479971541
@@ -2356,6 +2359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff257ffc6521d5c4695c1e99dd3ac79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxCards: 0
   stackChaosPositionMargin: {x: 0, y: 5, z: 5}
   stackChaosRotationMargin: {x: 0, y: 0, z: 10}
 --- !u!1 &1920648361

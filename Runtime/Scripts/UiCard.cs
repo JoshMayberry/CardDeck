@@ -11,7 +11,7 @@ namespace jmayberry.CardDeck {
 	public class Card<Action, Target> : MonoBehaviour, ISpawnable where Action : Enum where Target : Enum {
 		[Readonly] internal CardState currentState = CardState.Unknown;
 		[Required] [SerializeField] internal CardData<Action, Target> card;
-        [Required] [SerializeField] private Image afterUseImage;
+		[Required] [SerializeField] private Image afterUseImage;
 		[Required] [SerializeField] private Image rarityImage;
 		[Required] [SerializeField] private Image artworkImage;
 		[Required] [SerializeField] private Image holoImage;
@@ -25,58 +25,54 @@ namespace jmayberry.CardDeck {
 
 		public void SetCard(CardData<Action, Target> card) {
 			this.card = card;
-        }
+		}
 
 
-        public virtual void PlayCard() {
-            this.PlayCard(CardManager<Action, Target>.instance.currentContext);
-        }
+		public virtual void PlayCard() {
+			this.PlayCard(CardManager<Action, Target>.instance.currentContext);
+		}
 
-        public virtual void PlayCard(IGameContext<Action, Target> context) {
-            foreach (CardAction<Action, Target> action in this.card.actionList) {
-                context.ApplyEffect(action.effectType, action.effectTarget, action.effectMagnitude);
-            }
+		public virtual void PlayCard(IGameContext<Action, Target> context) {
+			foreach (CardAction<Action, Target> action in this.card.actionList) {
+				context.ApplyEffect(action.effectType, action.effectTarget, action.effectMagnitude);
+			}
 
-            switch (this.card.afterUse) {
-                case CardAfterUseType.GoToDiscard:
-                    GoToDiscard();
-                    break;
+			switch (this.card.afterUse) {
+				case CardAfterUseType.GoToDiscard:
+					GoToDiscard();
+					break;
 
-                case CardAfterUseType.GoToDraw:
-                    GoToDraw();
-                    break;
+				case CardAfterUseType.GoToDraw:
+					GoToDraw();
+					break;
 
-                case CardAfterUseType.GoToHand:
-                    GoToHand();
-                    break;
+				case CardAfterUseType.GoToHand:
+					GoToHand();
+					break;
 
-                case CardAfterUseType.GoToDestroy:
-                    GoToDestroy();
-                    break;
-            }
-        }
+				case CardAfterUseType.GoToDestroy:
+					GoToDestroy();
+					break;
+			}
+		}
 
-        public virtual bool GoToDiscard() {
-            CardManager<Action, Target>.instance.pileDiscard.MoveToPile(this);
-            return true;
-        }
+		public virtual bool GoToDiscard() {
+			return CardManager<Action, Target>.instance.pileDiscard.MoveToPile(this);
+		}
 
-        public virtual bool GoToDestroy() {
-            CardManager<Action, Target>.instance.pileDestroy.MoveToPile(this);
-            return true;
-        }
+		public virtual bool GoToDestroy() {
+			return CardManager<Action, Target>.instance.pileDestroy.MoveToPile(this);
+		}
 
-        public virtual bool GoToHand() {
-            CardManager<Action, Target>.instance.pileHand.MoveToPile(this);
-            return true;
-        }
+		public virtual bool GoToHand() {
+			return CardManager<Action, Target>.instance.pileHand.MoveToPile(this);
+		}
 
-        public virtual bool GoToDraw() {
-            CardManager<Action, Target>.instance.pileDraw.MoveToPile(this);
-            return true;
-        }
+		public virtual bool GoToDraw() {
+			return CardManager<Action, Target>.instance.pileDraw.MoveToPile(this);
+		}
 
-        public void UpdateImages() {
+		public void UpdateImages() {
 			if (this.card == null) {
 				Debug.LogError("No card set yet");
 				return;
@@ -122,7 +118,7 @@ namespace jmayberry.CardDeck {
 					break;
 			}
 
-            var cardManager = CardManager<Action, Target>.instance;
+			var cardManager = CardManager<Action, Target>.instance;
 			this.afterUseImage.sprite = cardManager.spriteAfterUse.GetValueOrDefault(this.card.afterUse, cardManager.spriteAfterUseDefault);
 			this.rarityImage.sprite = cardManager.spriteRarity.GetValueOrDefault(this.card.rarity, cardManager.spriteRarityDefault);
 			this.holoImage.sprite = cardManager.spriteHolo.GetValueOrDefault(this.card.holo, cardManager.spriteHoloDefault);
@@ -149,7 +145,7 @@ namespace jmayberry.CardDeck {
 			this.titleText.gameObject.SetActive(this.titleText.text != "");
 			this.costText.gameObject.SetActive(this.costText.text != "");
 			this.descriptionText.gameObject.SetActive(this.descriptionText.text != "");
-        }
+		}
 
 		public void OnSpawn(object spawner) {}
 

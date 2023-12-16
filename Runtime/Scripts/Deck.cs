@@ -15,30 +15,30 @@ namespace jmayberry.CardDeck {
 
 	public abstract class Deck<Action, Target> : ScriptableObject, IEnumerable where Action : Enum where Target : Enum {
 		[SerializeField] private string title;
-        [SerializeField] private DrawEmptyType whenDrawEmpty;
+		[SerializeField] private DrawEmptyType whenDrawEmpty;
 
-        [SerializeField] private List<CardData<Action, Target>> cardList = new List<CardData<Action, Target>>();
+		[SerializeField] private List<CardData<Action, Target>> cardList = new List<CardData<Action, Target>>();
 
-        public UnityEvent<Card<Action, Target>> onCardUse = new UnityEvent<Card<Action, Target>>();
-        public UnityEvent<Card<Action, Target>> onCardDraw = new UnityEvent<Card<Action, Target>>();
-        public UnityEvent<Card<Action, Target>> onCardDiscard = new UnityEvent<Card<Action, Target>>();
-        public UnityEvent<Card<Action, Target>> onCardHand = new UnityEvent<Card<Action, Target>>();
-        public UnityEvent<Card<Action, Target>> onCardDestroy = new UnityEvent<Card<Action, Target>>();
+		public UnityEvent<Card<Action, Target>> onCardUse = new UnityEvent<Card<Action, Target>>();
+		public UnityEvent<Card<Action, Target>> onCardDraw = new UnityEvent<Card<Action, Target>>();
+		public UnityEvent<Card<Action, Target>> onCardDiscard = new UnityEvent<Card<Action, Target>>();
+		public UnityEvent<Card<Action, Target>> onCardHand = new UnityEvent<Card<Action, Target>>();
+		public UnityEvent<Card<Action, Target>> onCardDestroy = new UnityEvent<Card<Action, Target>>();
 
-        public void InitializeDrawPile() {
+		public void InitializeDrawPile() {
 			var cardManager = CardManager<Action, Target>.instance;
 
-            cardManager.uiCardSpawner.DespawnAll();
-            foreach (CardData<Action, Target> card in this.cardList) {
+			cardManager.uiCardSpawner.DespawnAll();
+			foreach (CardData<Action, Target> card in this.cardList) {
 				if (card == null) {
-                    this.cardList.Remove(card); // Get rid of empty spots
-                    continue;
+					this.cardList.Remove(card); // Get rid of empty spots
+					continue;
 				}
-                Card<Action, Target> uiCard = cardManager.uiCardSpawner.Spawn(Vector3.zero, cardManager.gameObject.transform);
-                uiCard.currentState = CardState.Unknown;
-                uiCard.SetCard(card);
+				Card<Action, Target> uiCard = cardManager.uiCardSpawner.Spawn(Vector3.zero, cardManager.gameObject.transform);
+				uiCard.currentState = CardState.Unknown;
+				uiCard.SetCard(card);
 				uiCard.GoToDraw();
-            }
+			}
 
 			cardManager.pileDraw.Shuffle();
 		}
@@ -56,7 +56,8 @@ namespace jmayberry.CardDeck {
 
 		public Card<Action, Target> DrawCard() {
 			var cardManager = CardManager<Action, Target>.instance;
-            Card<Action, Target> card = cardManager.pileDraw.GetCard();
+
+			Card<Action, Target> card = cardManager.pileDraw.GetCard();
 			if (card == null) {
 				switch (this.whenDrawEmpty) {
 					case DrawEmptyType.ShuffleDiscard:
@@ -75,9 +76,11 @@ namespace jmayberry.CardDeck {
 					case DrawEmptyType.GameOver:
 						return null;
 				}
-            }
+			}
 
-			card.GoToHand();
+			if (!card.GoToHand()) {
+				return null;
+			}
 			return card;
 		}
 	}

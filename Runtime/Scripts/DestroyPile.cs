@@ -7,11 +7,17 @@ using UnityEngine.UI;
 namespace jmayberry.CardDeck {
 	[RequireComponent(typeof(VerticalLayoutGroup))]
 	public class PileDestroy<Action, Target> : Pile<Action, Target> where Action : Enum where Target : Enum {
-		public override void MoveToPile(Card<Action, Target> uiCard) {
-            uiCard.currentState = CardState.Destroyed;
-			base.MoveToPile(uiCard);
-            uiCard.gameObject.transform.localPosition = this.GetStackChaosPosition(0, 0, 0);
-            uiCard.gameObject.transform.localRotation = this.GetStackChaosRotation(110, 0, 0);
-        }
-    }
+		public override bool MoveToPile(Card<Action, Target> uiCard) {
+			var previousState = uiCard.currentState;
+			uiCard.currentState = CardState.Destroyed;
+			if (!base.MoveToPile(uiCard)) {
+				uiCard.currentState = previousState;
+				return false;
+			}
+
+			uiCard.gameObject.transform.localPosition = this.GetStackChaosPosition(0, 0, 0);
+			uiCard.gameObject.transform.localRotation = this.GetStackChaosRotation(110, 0, 0);
+			return true;
+		}
+	}
 }
