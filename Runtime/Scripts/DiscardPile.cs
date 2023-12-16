@@ -17,7 +17,8 @@ namespace jmayberry.CardDeck {
 
 			uiCard.gameObject.transform.localPosition = this.GetStackChaosPosition(0, 0, 0);
 			uiCard.gameObject.transform.localRotation = this.GetStackChaosRotation(110, 0, 0);
+			uiCard.gameObject.transform.localScale = this.initialCardScale;
 			return true;
-		}
+        }
 	}
 }

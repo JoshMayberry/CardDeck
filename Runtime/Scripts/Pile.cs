@@ -9,8 +9,9 @@ namespace jmayberry.CardDeck {
 
 		[SerializeField] protected Vector3 stackChaosPositionMargin = new Vector3(0, 5, 5);
         [SerializeField] protected Vector3 stackChaosRotationMargin = new Vector3(0, 0, 10);
+        [SerializeField] protected Vector3 initialCardScale = new Vector3(1, 1, 1);
 
-		public virtual bool MoveToPile(Card<Action, Target> card) {
+        public virtual bool MoveToPile(Card<Action, Target> card) {
 			if (this.IsFull()) {
 				return false;
 			}

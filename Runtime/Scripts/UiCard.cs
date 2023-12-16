@@ -23,7 +23,7 @@ namespace jmayberry.CardDeck {
 		[Required] [SerializeField] private TMP_Text descriptionText;
 		[Required] [SerializeField] private TMP_Text costText;
 
-		public void SetCard(CardData<Action, Target> card) {
+		public virtual void SetCard(CardData<Action, Target> card) {
 			this.card = card;
 		}
 
