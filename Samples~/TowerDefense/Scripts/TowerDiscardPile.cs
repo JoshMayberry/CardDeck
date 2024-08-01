@@ -1,7 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 using jmayberry.CardDeck;
 
-public class TowerDiscardPile : PileDiscard<TowerAction, TowerTarget> {}
+[RequireComponent(typeof(VerticalLayoutGroup))]
+public class TowerDiscardPile : PileDiscard<TowerAction, TowerTarget> { }

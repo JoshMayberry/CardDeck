@@ -10,7 +10,7 @@ using System.Collections.Generic;
 namespace jmayberry.CardDeck {
 	public class Card<Action, Target> : MonoBehaviour, ISpawnable where Action : Enum where Target : Enum {
 		public CardState currentState = CardState.Unknown; // TODO: Make readonly during playmode only
-		[Required] [SerializeField] public CardData<Action, Target> card;
+		[Required] [SerializeField] public CardData<Action, Target> card; // TODO: Rename this to 'cardData'
 		[Required] [SerializeField] private Image afterUseImage;
 		[Required] [SerializeField] private Image rarityImage;
 		[Required] [SerializeField] private Image artworkImage;

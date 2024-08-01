@@ -2,8 +2,7 @@
     "name": "jmayberry.CardDeck.Editor",
     "rootNamespace": "jmayberry.CardDeck.Editor",
     "references": [
-        "jmayberry.CardDeck",
-        "jmayberry.CustomAttributes"
+        "jmayberry.CardDeck"
     ],
     "includePlatforms": [
         "Editor"

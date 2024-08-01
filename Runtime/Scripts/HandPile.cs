@@ -8,7 +8,6 @@ namespace jmayberry.CardDeck {
 
 	// TODO: Look at a curved layout instead (https://gist.github.com/baba-s/cf7df94aa8be8412b25246b57aaef175)
 
-	[RequireComponent(typeof(HorizontalLayoutGroup))]
 	public class PileHand<Action, Target> : Pile<Action, Target> where Action : Enum where Target : Enum {
 		public override bool MoveToPile(Card<Action, Target> uiCard) {
 			var previousState = uiCard.currentState;

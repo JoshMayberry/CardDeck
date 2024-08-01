@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace jmayberry.CardDeck {
-	[RequireComponent(typeof(VerticalLayoutGroup))]
 	public class PileDraw<Action, Target> : Pile<Action, Target> where Action : Enum where Target : Enum {
 		public override bool MoveToPile(Card<Action, Target> uiCard) {
 			var previousState = uiCard.currentState;
